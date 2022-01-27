@@ -6,6 +6,8 @@ import { useState } from 'react';
 import Modal from 'react-modal';
 
 
+
+
 export function ButtonPesquisarCep() {
 
 
@@ -22,58 +24,67 @@ export function ButtonPesquisarCep() {
 
   function fecharModal() {
     setModalIsOpen(false);
+    
   }
 
-  async function consultarCep() {
+  async function consultarCep(e) {
     e.preventDefault();
 
     const response = await api.get(`${seuCep}/json/`)
 
-    const dadosApiViaCep = {
+    const dados = {
       endereco: response.data.logradouro,
       bairro: response.data.bairro,
       cidade: response.data.localidade,
       estado: response.data.uf
     }
 
-    setSalvarCep(dadosApiViaCep);
-    setSeuCep('')
+    setDadosCep(dados);
+    
   }
 
 
   function mudarCep(e) {
     setSeuCep(e.target.value)
+    
   }
 
   //jsx
   return (
     <div className={styles.buttonContent}>
-      <input 
-        type="number" 
-        placeholder="Digite seu CEP"
-        value={seuCep}
-        onChange={mudarCep}
-      />
-      
-      <button 
-        type="button"
-        onClick={abrirModal}
-      >
-          <FiSearch/>
-      </button>
+      <form onSubmit={consultarCep}>
+        <input 
+          type="number" 
+          placeholder="Digite seu CEP"
+          value={seuCep}
+          onChange={mudarCep}
+        />
+        
+        <button 
+          type="submit"
+          onClick={abrirModal}
+        >
+            <FiSearch/>
+        </button>
 
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={fecharModal}
-        className={styles.modal}
-        overlayClassName={styles.overlay}
-      >
-        <div className={styles.modalContent}>
-          <button onClick={fecharModal}><FiXSquare/></button>
-          <h1>Endereço</h1>
-          <p>Rua uruguaiana</p>
-        </div>
-      </Modal>
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={fecharModal}
+          className={styles.modal}
+          overlayClassName={styles.overlay}
+        >
+          <div className={styles.modalContent}>
+            <button onClick={fecharModal}><FiXSquare/></button>
+            
+            <h1>Você mora em:</h1>
+            <p>Endereço: {dadosCep.endereco}</p>
+            <p>Bairro: {dadosCep.bairro}</p>
+            <p>Cidade: {dadosCep.cidade}</p>
+            <p>Estado: {dadosCep.estado}</p>
+
+          </div>
+        </Modal>
+      </form>
       
     </div>
   )
