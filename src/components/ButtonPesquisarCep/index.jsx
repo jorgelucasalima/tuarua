@@ -27,11 +27,14 @@ export function ButtonPesquisarCep() {
     
   }
 
+  // função de consulta ao cep
   async function consultarCep(e) {
     e.preventDefault();
 
+    //resposta do cep de acordo api 
     const response = await api.get(`${seuCep}/json/`)
 
+    //objeto com os dados do cep
     const dados = {
       endereco: response.data.logradouro,
       bairro: response.data.bairro,
