@@ -8,7 +8,6 @@ export default function Home() {
         <title>TuaRua | Home</title>
       </Head>
 
-      <h1>home</h1>
     </>
   )
 }

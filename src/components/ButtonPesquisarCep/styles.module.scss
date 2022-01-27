@@ -26,11 +26,42 @@
     background-color: var(--red-500);
 
     svg {
-      height: 1rem;
-      width: 1rem;
+      height: 1.25rem;
+      width: 1.25rem;
       color: var(--white);
     }
+  }
+}
 
+.modalContent {
 
+  button {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    font-size: 14px;
+    text-align: center;
+    margin-left: 1rem;
+    margin-top: 2rem;
+
+    svg {
+      height: 1.25rem;
+      width: 1.25rem;
+    }
+  }
+
+  h1 {
+    margin-left: 1rem;
+    margin-top: 2rem;
+    font-size: 2rem;
+    color: var(--black-800);
+  }
+
+  p {
+    margin-left: 1rem;
+    margin-top: 1rem;
+    font-size: 1.25rem;
+    color: var(--black-800);
   }
 }
