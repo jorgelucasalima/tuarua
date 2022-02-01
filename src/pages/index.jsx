@@ -1,5 +1,5 @@
 import Head from 'next/head'
-
+import {ButtonPesquisarCep} from '../components/ButtonPesquisarCep'
 
 export default function Home() {
   return (
@@ -8,6 +8,7 @@ export default function Home() {
         <title>TuaRua | Home</title>
       </Head>
 
+      <ButtonPesquisarCep/>
     </>
   )
 }
